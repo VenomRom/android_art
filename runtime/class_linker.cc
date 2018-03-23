@@ -1519,7 +1519,7 @@ bool AppImageClassLoadersAndDexCachesHelper::Update(
       }
     }
   }
-  {
+  if (ClassLinker::kAppImageMayContainStrings) {
     // Fixup all the literal strings happens at app images which are supposed to be interned.
     ScopedTrace timing("Fixup String Intern in image and dex_cache");
     const auto& image_header = space->GetImageHeader();
